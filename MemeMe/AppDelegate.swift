@@ -13,7 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    
+    // MARK: Shared Model
+    static let initMeme = Meme(topText: "TOP", bottomText: "BOTTOM", image: nil, memeImage: nil)
+    var memes = [Meme]()
+    var currentMeme = AppDelegate.initMeme
+    var currentViewStyle: ViewStyleEnum = .tableView
+    var memeTextAttributes:[String:Any] = [:]
 
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
