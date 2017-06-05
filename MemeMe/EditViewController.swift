@@ -25,6 +25,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // MARK: Properties
     var memeToSave: Meme? = nil
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    var editingTextFieldTag: TextFieldTagEnum = .none
     
     override var prefersStatusBarHidden: Bool {
         get {
@@ -85,7 +86,9 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     func keyboardWillShow(_ notification: Notification) {
-        view.frame.origin.y = 0 - getKeyboardHeight(notification)
+        if editingTextFieldTag == .bottom {
+            view.frame.origin.y = 0 - getKeyboardHeight(notification)
+        }
     }
     
     func keyboardWillDisappear(_ notification: Notification) {
@@ -105,6 +108,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // MARK: UITextFieldDelegate methods
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.text = ""
+        editingTextFieldTag = TextFieldTagEnum(rawValue: textField.tag)!
         return true
     }
     
@@ -115,13 +119,14 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-        if textField.tag == 0 {
+        if TextFieldTagEnum(rawValue: textField.tag) == .top {
             appDelegate.currentMeme.topText = textField.text
-        } else if textField.tag == 1 {
+        } else if TextFieldTagEnum(rawValue: textField.tag) == .bottom {
             appDelegate.currentMeme.bottomText = textField.text
         } else {
             print("incorrect textField tag detected")
         }
+        editingTextFieldTag = TextFieldTagEnum.none
     }
     
     
