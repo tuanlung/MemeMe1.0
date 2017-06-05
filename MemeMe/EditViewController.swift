@@ -19,8 +19,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
-    @IBOutlet weak var verticalConstraintForTopText: NSLayoutConstraint!
-    @IBOutlet weak var verticalConstraintForBottomText: NSLayoutConstraint!
+    
     
     // MARK: Properties
     var memeToSave: Meme? = nil
@@ -187,10 +186,6 @@ extension EditViewController {
         UIGraphicsBeginImageContext(imageView.frame.size)
         
         imageView.draw(imageView.frame)
-        //topTextField.drawHierarchy(in: topTextField.frame, afterScreenUpdates: true)
-        //bottomTextField.drawHierarchy(in: bottomTextField.frame, afterScreenUpdates: true)
-        //topTextField.draw(topTextField.frame)
-        //topTextField.drawText(in: topTextField.frame)
  
         let horizontalAdjustment = view.frame.minX - imageView.frame.minX
         let verticalAdjustment = view.frame.minY - imageView.frame.minY

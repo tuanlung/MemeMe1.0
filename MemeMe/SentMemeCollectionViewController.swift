@@ -40,9 +40,6 @@ class SentMemeCollectionViewController: UICollectionViewController {
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
-        
-        
-        //verticalConstraintForTopLabel.constant = dimension/5
     }
     
     
@@ -50,8 +47,8 @@ class SentMemeCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         appDelegate.currentMeme = appDelegate.memes[indexPath.row]
-        let showMemeViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShowMemeViewController") as! UIViewController
-        navigationController?.pushViewController(showMemeViewController, animated: true)
+        let showMemeViewController = self.storyboard?.instantiateViewController(withIdentifier: "ShowMemeViewController")
+        navigationController?.pushViewController(showMemeViewController!, animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -112,8 +112,6 @@
                         <outlet property="takePhotoButton" destination="dpz-7f-GmR" id="n3k-rQ-Nva"/>
                         <outlet property="topTextField" destination="vsW-v5-pex" id="Dxx-ZP-d9O"/>
                         <outlet property="topToolbar" destination="xA0-aZ-IAs" id="f4T-yd-KtT"/>
-                        <outlet property="verticalConstraintForBottomText" destination="nEs-Uq-qpr" id="46v-U3-sHx"/>
-                        <outlet property="verticalConstraintForTopText" destination="8bd-C8-J6Q" id="Mfx-CQ-iqD"/>
                         <segue destination="cx3-l3-ilZ" kind="show" identifier="segueToTabBarController" id="keB-2P-qJR"/>
                     </connections>
                 </viewController>
@@ -241,7 +239,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="HDR-wp-tBP" kind="show" id="VOX-aC-cKY"/>
+                        <segue destination="HDR-wp-tBP" kind="show" identifier="TableViewToShowViewSegue" id="VOX-aC-cKY"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xb-qE-8oP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -342,7 +340,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="Ood-No-dYl" id="wyN-Uw-mjE"/>
-                        <segue destination="HDR-wp-tBP" kind="show" id="nRH-9e-BQR"/>
+                        <segue destination="HDR-wp-tBP" kind="show" identifier="CollectionViewToShowViewSegue" id="nRH-9e-BQR"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sdX-66-qhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
