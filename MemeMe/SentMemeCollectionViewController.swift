@@ -27,6 +27,7 @@ class SentMemeCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         appDelegate.currentViewStyle = .collectionView
+        tabBarController?.tabBar.isHidden = false
     }
     
     override func viewWillLayoutSubviews() {

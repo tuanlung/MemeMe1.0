@@ -66,15 +66,15 @@
                                 <rect key="frame" x="4" y="84" width="406" height="568"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05D-0s-U7e" userLabel="Bottom Text Field">
-                                <rect key="frame" x="4.6666666666666572" y="582" width="406" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05D-0s-U7e" userLabel="Bottom Text Field">
+                                <rect key="frame" x="4.6666666666666572" y="595" width="406" height="17"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vsW-v5-pex" userLabel="Top Text Field">
-                                <rect key="frame" x="4.6666666666666572" y="134" width="406" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vsW-v5-pex" userLabel="Top Text Field">
+                                <rect key="frame" x="4.6666666666666572" y="147" width="406" height="17"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -111,6 +111,8 @@
                         <outlet property="takePhotoButton" destination="dpz-7f-GmR" id="n3k-rQ-Nva"/>
                         <outlet property="topTextField" destination="vsW-v5-pex" id="Dxx-ZP-d9O"/>
                         <outlet property="topToolbar" destination="xA0-aZ-IAs" id="f4T-yd-KtT"/>
+                        <outlet property="verticalConstraintForBottomText" destination="nEs-Uq-qpr" id="46v-U3-sHx"/>
+                        <outlet property="verticalConstraintForTopText" destination="8bd-C8-J6Q" id="Mfx-CQ-iqD"/>
                         <segue destination="cx3-l3-ilZ" kind="show" identifier="segueToTabBarController" id="keB-2P-qJR"/>
                     </connections>
                 </viewController>
@@ -266,7 +268,7 @@
         <scene sceneID="Mnb-aw-JGM">
             <objects>
                 <collectionViewController title="Sent Memes" id="9wd-GX-Sup" customClass="SentMemeCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="VKS-vN-jTC">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="VKS-vN-jTC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -349,7 +351,7 @@
         <!--Sent Memes-->
         <scene sceneID="7Dh-wQ-Wg5">
             <objects>
-                <viewController storyboardIdentifier="ShowMemeViewController" hidesBottomBarWhenPushed="YES" id="HDR-wp-tBP" customClass="ShowMemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowMemeViewController" id="HDR-wp-tBP" customClass="ShowMemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="io4-8z-xmy"/>
                         <viewControllerLayoutGuide type="bottom" id="Oow-CL-9sP"/>
@@ -359,14 +361,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mzc-Px-YyW">
-                                <rect key="frame" x="4" y="64" width="406" height="623"/>
+                                <rect key="frame" x="4" y="104" width="406" height="543"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Oow-CL-9sP" firstAttribute="top" secondItem="Mzc-Px-YyW" secondAttribute="bottom" id="Jxb-NY-HEc"/>
+                            <constraint firstItem="Oow-CL-9sP" firstAttribute="top" secondItem="Mzc-Px-YyW" secondAttribute="bottom" constant="40" id="Jxb-NY-HEc"/>
                             <constraint firstItem="Mzc-Px-YyW" firstAttribute="leading" secondItem="yic-4D-iBi" secondAttribute="leadingMargin" constant="-16" id="XaF-lt-Flb"/>
-                            <constraint firstItem="Mzc-Px-YyW" firstAttribute="top" secondItem="io4-8z-xmy" secondAttribute="bottom" id="akl-d2-45t"/>
+                            <constraint firstItem="Mzc-Px-YyW" firstAttribute="top" secondItem="io4-8z-xmy" secondAttribute="bottom" constant="40" id="akl-d2-45t"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mzc-Px-YyW" secondAttribute="trailing" constant="-16" id="v1Q-Tr-OoC"/>
                         </constraints>
                     </view>

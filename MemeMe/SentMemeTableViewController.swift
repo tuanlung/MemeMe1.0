@@ -24,6 +24,7 @@ class SentMemeTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.currentViewStyle = .tableView
+        tabBarController?.tabBar.isHidden = false
     }
     
     
