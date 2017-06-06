@@ -177,7 +177,7 @@ extension EditViewController {
     
     func updateButtonApperance() {
         takePhotoButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        cancelButton.isEnabled = imageView.image != nil
+        cancelButton.isEnabled = appDelegate.memes.isEmpty ? (imageView.image != nil) : true
         shareButton.isEnabled = imageView.image != nil
     }
     
