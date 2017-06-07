@@ -19,6 +19,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var snapshotView: UIView!
     
     
     // MARK: Properties
@@ -184,17 +185,22 @@ extension EditViewController {
     func takeSnapshot() -> UIImage {
         
         UIGraphicsBeginImageContext(imageView.frame.size)
+
+        // Shift the view-to-draw to the top-left of the picture
+        let horizontalAdjustment = view.frame.minX - snapshotView.frame.minX
+        let verticalAdjustment = view.frame.minY - snapshotView.frame.minY
+        let snapshotRect = snapshotView.frame.offsetBy(dx: horizontalAdjustment, dy: verticalAdjustment)
+
+        // Change the background color to white
+        let originalBackgroundColor = snapshotView.backgroundColor
+        snapshotView.backgroundColor = UIColor.white
         
-        imageView.draw(imageView.frame)
- 
-        let horizontalAdjustment = view.frame.minX - imageView.frame.minX
-        let verticalAdjustment = view.frame.minY - imageView.frame.minY
-        let topTextRect = topTextField.frame.offsetBy(dx: horizontalAdjustment, dy: verticalAdjustment)
-        let bottomTextRect = bottomTextField.frame.offsetBy(dx: horizontalAdjustment, dy: verticalAdjustment)
+        // Take snapshot of everything under snapshotView
+        snapshotView.drawHierarchy(in: snapshotRect, afterScreenUpdates: true)
         
-        topTextField.drawText(in: topTextRect)
-        bottomTextField.drawText(in: bottomTextRect)
-        
+        // Change back the background color
+        snapshotView.backgroundColor = originalBackgroundColor
+
         let memeImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         

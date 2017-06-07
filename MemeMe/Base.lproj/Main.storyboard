@@ -41,6 +41,49 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kk-H2-lIX" userLabel="Snapshot View">
+                                <rect key="frame" x="0.0" y="84" width="414" height="568"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="qFs-Mo-PeO">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05D-0s-U7e" userLabel="Bottom Text Field">
+                                        <rect key="frame" x="0.0" y="511" width="414" height="17"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="tQL-Dm-T4l"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vsW-v5-pex" userLabel="Top Text Field">
+                                        <rect key="frame" x="0.0" y="40" width="414" height="17"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="Rqo-zg-dI8"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="05D-0s-U7e" secondAttribute="bottom" constant="40" id="4jo-as-L7e"/>
+                                    <constraint firstItem="vsW-v5-pex" firstAttribute="width" secondItem="8kk-H2-lIX" secondAttribute="width" id="5Gp-7L-KfZ"/>
+                                    <constraint firstItem="vsW-v5-pex" firstAttribute="top" secondItem="8kk-H2-lIX" secondAttribute="top" constant="40" id="8B3-hW-SPG"/>
+                                    <constraint firstItem="vsW-v5-pex" firstAttribute="centerX" secondItem="8kk-H2-lIX" secondAttribute="centerX" id="FN8-mK-ZPM"/>
+                                    <constraint firstItem="qFs-Mo-PeO" firstAttribute="leading" secondItem="8kk-H2-lIX" secondAttribute="leading" id="Joc-SS-jLM"/>
+                                    <constraint firstAttribute="bottom" secondItem="qFs-Mo-PeO" secondAttribute="bottom" id="XO5-t4-uxM"/>
+                                    <constraint firstAttribute="trailing" secondItem="qFs-Mo-PeO" secondAttribute="trailing" id="ZRR-PX-96T"/>
+                                    <constraint firstItem="qFs-Mo-PeO" firstAttribute="top" secondItem="8kk-H2-lIX" secondAttribute="top" id="g2D-GY-Ebk"/>
+                                    <constraint firstItem="05D-0s-U7e" firstAttribute="width" secondItem="8kk-H2-lIX" secondAttribute="width" id="snl-nV-Hc7"/>
+                                    <constraint firstItem="05D-0s-U7e" firstAttribute="centerX" secondItem="8kk-H2-lIX" secondAttribute="centerX" id="uCh-PT-woU"/>
+                                </constraints>
+                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACZ-z0-vdq" userLabel="Bottom Toolbar">
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <constraints>
@@ -62,44 +105,19 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="q7o-LV-V5X"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="qFs-Mo-PeO">
-                                <rect key="frame" x="4" y="84" width="406" height="568"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
-                            </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05D-0s-U7e" userLabel="Bottom Text Field">
-                                <rect key="frame" x="4.6666666666666572" y="595" width="406" height="17"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vsW-v5-pex" userLabel="Top Text Field">
-                                <rect key="frame" x="4.6666666666666572" y="147" width="406" height="17"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vsW-v5-pex" firstAttribute="width" secondItem="qFs-Mo-PeO" secondAttribute="width" id="1iT-fD-vIc"/>
+                            <constraint firstItem="8kk-H2-lIX" firstAttribute="top" secondItem="xA0-aZ-IAs" secondAttribute="bottom" constant="40" id="2ii-1u-zsG"/>
                             <constraint firstItem="ACZ-z0-vdq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4be-xg-fds"/>
-                            <constraint firstItem="qFs-Mo-PeO" firstAttribute="top" secondItem="vsW-v5-pex" secondAttribute="bottom" constant="-80" id="8bd-C8-J6Q"/>
-                            <constraint firstItem="05D-0s-U7e" firstAttribute="centerX" secondItem="qFs-Mo-PeO" secondAttribute="centerX" id="H1L-eE-bok"/>
-                            <constraint firstItem="qFs-Mo-PeO" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Iqc-EU-2Of"/>
+                            <constraint firstItem="8kk-H2-lIX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="56Y-Au-1SA"/>
+                            <constraint firstItem="ACZ-z0-vdq" firstAttribute="top" secondItem="8kk-H2-lIX" secondAttribute="bottom" constant="40" id="E2f-ss-7v2"/>
+                            <constraint firstItem="8kk-H2-lIX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jxb-AK-KQ0"/>
                             <constraint firstAttribute="trailing" secondItem="ACZ-z0-vdq" secondAttribute="trailing" id="KZ8-wT-qpZ"/>
                             <constraint firstItem="xA0-aZ-IAs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Kzh-4f-zJ8"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ACZ-z0-vdq" secondAttribute="bottom" id="MXv-QH-ArA"/>
-                            <constraint firstItem="qFs-Mo-PeO" firstAttribute="top" secondItem="xA0-aZ-IAs" secondAttribute="bottom" constant="40" id="Oce-kK-64Z"/>
                             <constraint firstAttribute="trailing" secondItem="xA0-aZ-IAs" secondAttribute="trailing" id="RYw-WQ-npz"/>
-                            <constraint firstItem="05D-0s-U7e" firstAttribute="width" secondItem="qFs-Mo-PeO" secondAttribute="width" id="WM6-Wv-0Ox"/>
                             <constraint firstItem="xA0-aZ-IAs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="bJp-hq-rec"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="qFs-Mo-PeO" secondAttribute="trailing" constant="-16" id="dmk-kb-zhA"/>
-                            <constraint firstItem="ACZ-z0-vdq" firstAttribute="top" secondItem="qFs-Mo-PeO" secondAttribute="bottom" constant="40" id="frQ-AI-iox"/>
-                            <constraint firstItem="vsW-v5-pex" firstAttribute="centerX" secondItem="qFs-Mo-PeO" secondAttribute="centerX" id="krn-fv-epw"/>
-                            <constraint firstItem="ACZ-z0-vdq" firstAttribute="top" secondItem="05D-0s-U7e" secondAttribute="bottom" constant="80" id="nEs-Uq-qpr"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -109,6 +127,7 @@
                         <outlet property="cancelButton" destination="4FV-5b-hrM" id="Diq-9X-odU"/>
                         <outlet property="imageView" destination="qFs-Mo-PeO" id="TA9-Ne-3R2"/>
                         <outlet property="shareButton" destination="939-C8-8HV" id="oqk-3m-zaL"/>
+                        <outlet property="snapshotView" destination="8kk-H2-lIX" id="nmb-KR-0uc"/>
                         <outlet property="takePhotoButton" destination="dpz-7f-GmR" id="n3k-rQ-Nva"/>
                         <outlet property="topTextField" destination="vsW-v5-pex" id="Dxx-ZP-d9O"/>
                         <outlet property="topToolbar" destination="xA0-aZ-IAs" id="f4T-yd-KtT"/>
