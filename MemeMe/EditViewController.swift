@@ -108,6 +108,11 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     // MARK: UITextFieldDelegate methods
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.text = ""
+        
+        // Need to re-apply the format in case textField was nil previously
+        topTextField.defaultTextAttributes = appDelegate.memeTextAttributes
+        bottomTextField.defaultTextAttributes = appDelegate.memeTextAttributes
+        
         editingTextFieldTag = TextFieldTagEnum(rawValue: textField.tag)!
         return true
     }
