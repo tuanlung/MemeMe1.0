@@ -50,20 +50,20 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05D-0s-U7e" userLabel="Bottom Text Field">
-                                        <rect key="frame" x="0.0" y="511" width="414" height="17"/>
+                                        <rect key="frame" x="0.0" y="483" width="414" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="tQL-Dm-T4l"/>
+                                            <constraint firstAttribute="height" constant="45" id="tQL-Dm-T4l"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vsW-v5-pex" userLabel="Top Text Field">
-                                        <rect key="frame" x="0.0" y="40" width="414" height="17"/>
+                                        <rect key="frame" x="0.0" y="40" width="414" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="Rqo-zg-dI8"/>
+                                            <constraint firstAttribute="height" constant="45" id="Rqo-zg-dI8"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

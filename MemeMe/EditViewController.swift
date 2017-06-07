@@ -238,7 +238,7 @@ extension EditViewController {
         appDelegate.memeTextAttributes = [
             NSStrokeColorAttributeName: UIColor.black,
             NSForegroundColorAttributeName: UIColor.white,
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 25)!,
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 45)!,
             NSStrokeWidthAttributeName: -5,
             NSParagraphStyleAttributeName: style
         ]
