@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina5_5" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,11 +18,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xA0-aZ-IAs" userLabel="Top Toolbar">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="736" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="sBv-BK-3On"/>
                                 </constraints>
@@ -41,15 +41,15 @@
                                 </items>
                             </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8kk-H2-lIX" userLabel="Snapshot View">
-                                <rect key="frame" x="0.0" y="84" width="414" height="568"/>
+                                <rect key="frame" x="0.0" y="44" width="736" height="326"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="qFs-Mo-PeO">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="568"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="736" height="326"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </imageView>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="05D-0s-U7e" userLabel="Bottom Text Field">
-                                        <rect key="frame" x="0.0" y="483" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="241" width="736" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="tQL-Dm-T4l"/>
@@ -59,7 +59,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vsW-v5-pex" userLabel="Top Text Field">
-                                        <rect key="frame" x="0.0" y="40" width="414" height="45"/>
+                                        <rect key="frame" x="0.0" y="40" width="736" height="45"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="Rqo-zg-dI8"/>
@@ -84,7 +84,7 @@
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACZ-z0-vdq" userLabel="Bottom Toolbar">
-                                <rect key="frame" x="0.0" y="692" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="370" width="736" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="krB-Zi-xvq"/>
                                 </constraints>
@@ -107,10 +107,10 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8kk-H2-lIX" firstAttribute="top" secondItem="xA0-aZ-IAs" secondAttribute="bottom" constant="40" id="2ii-1u-zsG"/>
+                            <constraint firstItem="8kk-H2-lIX" firstAttribute="top" secondItem="xA0-aZ-IAs" secondAttribute="bottom" id="2ii-1u-zsG"/>
                             <constraint firstItem="ACZ-z0-vdq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="4be-xg-fds"/>
                             <constraint firstItem="8kk-H2-lIX" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="56Y-Au-1SA"/>
-                            <constraint firstItem="ACZ-z0-vdq" firstAttribute="top" secondItem="8kk-H2-lIX" secondAttribute="bottom" constant="40" id="E2f-ss-7v2"/>
+                            <constraint firstItem="ACZ-z0-vdq" firstAttribute="top" secondItem="8kk-H2-lIX" secondAttribute="bottom" id="E2f-ss-7v2"/>
                             <constraint firstItem="8kk-H2-lIX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jxb-AK-KQ0"/>
                             <constraint firstAttribute="trailing" secondItem="ACZ-z0-vdq" secondAttribute="trailing" id="KZ8-wT-qpZ"/>
                             <constraint firstItem="xA0-aZ-IAs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Kzh-4f-zJ8"/>
@@ -124,6 +124,8 @@
                         <outlet property="bottomTextField" destination="05D-0s-U7e" id="kW9-nK-owK"/>
                         <outlet property="bottomToolbar" destination="ACZ-z0-vdq" id="tFh-Ps-OCa"/>
                         <outlet property="cancelButton" destination="4FV-5b-hrM" id="Diq-9X-odU"/>
+                        <outlet property="constraintForBottomText" destination="4jo-as-L7e" id="uZf-wj-g5w"/>
+                        <outlet property="constraintForTopText" destination="8B3-hW-SPG" id="z4T-2V-f2Q"/>
                         <outlet property="imageView" destination="qFs-Mo-PeO" id="TA9-Ne-3R2"/>
                         <outlet property="shareButton" destination="939-C8-8HV" id="oqk-3m-zaL"/>
                         <outlet property="snapshotView" destination="8kk-H2-lIX" id="nmb-KR-0uc"/>

@@ -20,7 +20,8 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var snapshotView: UIView!
-    
+    @IBOutlet weak var constraintForTopText: NSLayoutConstraint!
+    @IBOutlet weak var constraintForBottomText: NSLayoutConstraint!
     
     // MARK: Properties
     var memeToSave: Meme? = nil
@@ -28,6 +29,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     var editingTextFieldTag: TextFieldTagEnum = .none
     
     override var prefersStatusBarHidden: Bool {
+        
         get {
             return true
         }
@@ -48,13 +50,17 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewWillAppear(animated)
         
         updateButtonApperance()
-        
         applyTextFormat()
+        
         subscribeToKeyboardNotifications()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         unsubscribeFromKeyboardNotifications()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        updateTextPosition()
     }
     
     
@@ -105,19 +111,11 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         return true
     }
     
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         editingTextFieldTag = TextFieldTagEnum.none
         return true
     }
- 
-   /*
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.resignFirstResponder()
-        editingTextFieldTag = TextFieldTagEnum.none
-    }
- */
     
     
     // MARK: IBActions
@@ -127,7 +125,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         imagePickerController.sourceType = .camera
         self.present(imagePickerController, animated: true, completion: nil)
     }
-
+    
     @IBAction func pickPhotoFromAlbum(_ sender: Any) {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
@@ -139,7 +137,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         resetImageAndText()
         updateButtonApperance()
     }
-
+    
     @IBAction func share(_ sender: Any) {
         
         let memeImage = takeSnapshot()
@@ -166,6 +164,7 @@ extension EditViewController {
             appDelegate.memes.append(meme)
         }
     }
+    
     func updateButtonApperance() {
         takePhotoButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         shareButton.isEnabled = (imageView.image != nil)
@@ -174,12 +173,12 @@ extension EditViewController {
     func takeSnapshot() -> UIImage {
         
         UIGraphicsBeginImageContext(imageView.frame.size)
-
+        
         // Shift the view-to-draw to the top-left of the picture
         let horizontalAdjustment = view.frame.minX - snapshotView.frame.minX
         let verticalAdjustment = view.frame.minY - snapshotView.frame.minY
         let snapshotRect = snapshotView.frame.offsetBy(dx: horizontalAdjustment, dy: verticalAdjustment)
-
+        
         // Change the background color to white
         let originalBackgroundColor = snapshotView.backgroundColor
         snapshotView.backgroundColor = UIColor.white
@@ -189,7 +188,7 @@ extension EditViewController {
         
         // Change back the background color
         snapshotView.backgroundColor = originalBackgroundColor
-
+        
         let memeImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
@@ -218,6 +217,20 @@ extension EditViewController {
         imageView.image = nil
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
+    }
+    
+    func updateTextPosition() {
+        let height: CGFloat = snapshotView.frame.height
+        var distance: CGFloat = 0.0
+        
+        if UIApplication.shared.statusBarOrientation.isPortrait {
+            distance = height * 0.075
+        } else {
+            distance = height * 0.01
+        }
+        
+        constraintForTopText.constant = distance
+        constraintForBottomText.constant = distance
     }
 }
 
