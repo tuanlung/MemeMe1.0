@@ -145,6 +145,10 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         memeToSave = Meme(topText: topTextField.text, bottomText: bottomTextField.text, image: imageView.image, memeImage: memeImage)
         
         let activityViewController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
+        
+        // ipad needs to present it as a popover
+        activityViewController.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
+        
         activityViewController.completionWithItemsHandler = saveMeme
         
         self.present(activityViewController, animated: true, completion: nil)
