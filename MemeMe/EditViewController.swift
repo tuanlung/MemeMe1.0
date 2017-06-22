@@ -38,6 +38,7 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         initMemeTextAttributes()
+        resetImageAndText()
         
         topTextField.delegate = self
         bottomTextField.delegate = self
@@ -46,12 +47,9 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        syncToCurrentMeme()
         updateButtonApperance()
         
-        topTextField.defaultTextAttributes = appDelegate.memeTextAttributes
-        bottomTextField.defaultTextAttributes = appDelegate.memeTextAttributes
-        
+        applyTextFormat()
         subscribeToKeyboardNotifications()
     }
     
@@ -60,19 +58,10 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     
-    // MARK: Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "segueToTabBarController" {
-            let destination = segue.destination as! UITabBarController
-            destination.selectedIndex = appDelegate.currentViewStyle.rawValue
-        }
-    }
-
-    
     // MARK: UIImagePickerControllerDelegate Methods
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info["UIImagePickerControllerOriginalImage"] as? UIImage {
-            appDelegate.currentMeme.image = image
+            imageView.image = image
         }
         dismiss(animated: true, completion: nil)
     }
@@ -110,29 +99,25 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         textField.text = ""
         
         // Need to re-apply the format in case textField was nil previously
-        topTextField.defaultTextAttributes = appDelegate.memeTextAttributes
-        bottomTextField.defaultTextAttributes = appDelegate.memeTextAttributes
+        applyTextFormat()
         
         editingTextFieldTag = TextFieldTagEnum(rawValue: textField.tag)!
         return true
     }
     
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        editingTextFieldTag = TextFieldTagEnum.none
         return true
     }
-    
+ 
+   /*
     func textFieldDidEndEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
-        if TextFieldTagEnum(rawValue: textField.tag) == .top {
-            appDelegate.currentMeme.topText = textField.text
-        } else if TextFieldTagEnum(rawValue: textField.tag) == .bottom {
-            appDelegate.currentMeme.bottomText = textField.text
-        } else {
-            print("incorrect textField tag detected")
-        }
         editingTextFieldTag = TextFieldTagEnum.none
     }
+ */
     
     
     // MARK: IBActions
@@ -151,22 +136,18 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     @IBAction func cancel(_ sender: Any) {
-        if appDelegate.memes.isEmpty {
-            appDelegate.currentMeme = AppDelegate.initMeme
-            syncToCurrentMeme()
-            updateButtonApperance()
-        } else {
-            self.performSegue(withIdentifier: "segueToTabBarController", sender: nil)
-        }
+        resetImageAndText()
+        updateButtonApperance()
     }
 
     @IBAction func share(_ sender: Any) {
         
         let memeImage = takeSnapshot()
+        
         memeToSave = Meme(topText: topTextField.text, bottomText: bottomTextField.text, image: imageView.image, memeImage: memeImage)
-
+        
         let activityViewController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
-        activityViewController.completionWithItemsHandler = performSegueAfterSharing
+        activityViewController.completionWithItemsHandler = saveMeme
         
         self.present(activityViewController, animated: true, completion: nil)
     }
@@ -175,16 +156,19 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
 
 extension EditViewController {
     
-    func saveMeme(_ meme: Meme) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    // MARK: Helper functions
+    func saveMeme(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) {
+        if !completed {
+            return
+        }
         
-        appDelegate.memes.append(meme)
+        if let meme = memeToSave {
+            appDelegate.memes.append(meme)
+        }
     }
-    
     func updateButtonApperance() {
         takePhotoButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        cancelButton.isEnabled = appDelegate.memes.isEmpty ? (imageView.image != nil) : true
-        shareButton.isEnabled = imageView.image != nil
+        shareButton.isEnabled = (imageView.image != nil)
     }
     
     func takeSnapshot() -> UIImage {
@@ -212,25 +196,6 @@ extension EditViewController {
         return memeImage
     }
     
-    func showToolbars(isHidden: Bool) {
-        topToolbar.isHidden = isHidden
-        bottomToolbar.isHidden = isHidden
-    }
-    
-    func performSegueAfterSharing(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) {
-        if completed {
-            saveMeme(memeToSave!)
-            
-            self.performSegue(withIdentifier: "segueToTabBarController", sender: nil)
-        }
-    }
-    
-    func syncToCurrentMeme() {
-        imageView.image = appDelegate.currentMeme.image
-        topTextField.text = appDelegate.currentMeme.topText
-        bottomTextField.text = appDelegate.currentMeme.bottomText
-    }
-    
     func initMemeTextAttributes() {
         let style = NSMutableParagraphStyle()
         style.alignment = .center
@@ -242,6 +207,17 @@ extension EditViewController {
             NSStrokeWidthAttributeName: -5,
             NSParagraphStyleAttributeName: style
         ]
+    }
+    
+    func applyTextFormat() {
+        topTextField.defaultTextAttributes = appDelegate.memeTextAttributes
+        bottomTextField.defaultTextAttributes = appDelegate.memeTextAttributes
+    }
+    
+    func resetImageAndText() {
+        imageView.image = nil
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
     }
 }
 

@@ -15,10 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     // MARK: Shared Model
-    static let initMeme = Meme(topText: "TOP", bottomText: "BOTTOM", image: nil, memeImage: nil)
     var memes = [Meme]()
-    var currentMeme = AppDelegate.initMeme
-    var currentViewStyle: ViewStyleEnum = .tableView
     var memeTextAttributes:[String:Any] = [:]
 
     
