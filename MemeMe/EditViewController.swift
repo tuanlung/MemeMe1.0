@@ -28,13 +28,6 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var editingTextFieldTag: TextFieldTagEnum = .none
     
-    override var prefersStatusBarHidden: Bool {
-        
-        get {
-            return true
-        }
-    }
-    
     
     // MARK: Life Cycle
     override func viewDidLoad() {
