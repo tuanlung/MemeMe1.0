@@ -221,11 +221,13 @@ extension EditViewController {
     func updateTextPosition() {
         let height: CGFloat = snapshotView.frame.height
         var distance: CGFloat = 0.0
+        let textFieldMarginOverHeightRatioInPortrait: CGFloat = 0.075
+        let textFieldMarginOverHeightRatioInLandscape: CGFloat = 0.01
         
         if UIApplication.shared.statusBarOrientation.isPortrait {
-            distance = height * 0.075
+            distance = height * textFieldMarginOverHeightRatioInPortrait
         } else {
-            distance = height * 0.01
+            distance = height * textFieldMarginOverHeightRatioInLandscape
         }
         
         constraintForTopText.constant = distance
