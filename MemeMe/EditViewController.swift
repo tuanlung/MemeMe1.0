@@ -46,10 +46,12 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         updateTextPosition()
     }
     
