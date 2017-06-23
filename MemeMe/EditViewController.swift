@@ -34,9 +34,6 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         super.viewDidLoad()
         initMemeTextAttributes()
         resetImageAndText()
-        
-        topTextField.delegate = self
-        bottomTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
