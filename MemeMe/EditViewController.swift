@@ -94,17 +94,20 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     // MARK: UITextFieldDelegate methods
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        textField.text = ""
-        
-        // Need to re-apply the format in case textField was nil previously
-        applyTextFormat()
         
         editingTextFieldTag = TextFieldTagEnum(rawValue: textField.tag)!
+        clearTextFieldIfNeeded(textField)
+        
         return true
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
+        // somehow resignFirstResponder() will change NSStorkeColorAttributeName's value to nil when 
+        // textField.text == ""
+        applyTextFormat()
+        
         editingTextFieldTag = TextFieldTagEnum.none
         return true
     }
@@ -227,6 +230,14 @@ extension EditViewController {
         
         constraintForTopText.constant = distance
         constraintForBottomText.constant = distance
+    }
+    
+    func clearTextFieldIfNeeded(_ textField: UITextField) {
+        if editingTextFieldTag == .top && textField.text == "TOP" {
+            textField.text = ""
+        } else if editingTextFieldTag == .bottom && textField.text == "BOTTOM" {
+            textField.text = ""
+        }
     }
 }
 
