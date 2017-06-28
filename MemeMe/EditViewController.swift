@@ -24,7 +24,6 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var constraintForBottomText: NSLayoutConstraint!
     
     // MARK: Properties
-    var memeToSave: Meme? = nil
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var editingTextFieldTag: TextFieldTagEnum = .none
     
@@ -137,32 +136,20 @@ class EditViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         let memeImage = takeSnapshot()
         
-        memeToSave = Meme(topText: topTextField.text, bottomText: bottomTextField.text, image: imageView.image, memeImage: memeImage)
+        let newMeme = Meme(topText: topTextField.text, bottomText: bottomTextField.text, image: imageView.image, memeImage: memeImage)
         
         let activityViewController = UIActivityViewController(activityItems: [memeImage], applicationActivities: nil)
         
         // ipad needs to present it as a popover
         activityViewController.popoverPresentationController?.barButtonItem = sender as? UIBarButtonItem
-        
-        activityViewController.completionWithItemsHandler = saveMeme
-        
-        self.present(activityViewController, animated: true, completion: nil)
+        present(activityViewController, animated: true, completion: {
+            self.appDelegate.memes.append(newMeme)
+        })
     }
 }
 
 
 extension EditViewController {
-    
-    // MARK: Helper functions
-    func saveMeme(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) {
-        if !completed {
-            return
-        }
-        
-        if let meme = memeToSave {
-            appDelegate.memes.append(meme)
-        }
-    }
     
     func updateButtonApperance() {
         takePhotoButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
